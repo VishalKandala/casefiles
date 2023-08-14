@@ -8,8 +8,8 @@
 -twoD 0                                         # 2D Simulation.
 
 ## Solver Parameters ###
--vis_flg 0
--dt 0.005 #//0.0005                            # timestep size
+-vis_flg 1
+-dt 0.05 #//0.0005                            # timestep size
 -totalsteps 0                                  # Total Number of steps from starting time.
 #-d_taw 0.01                                     # ?
 #-rstart 500                                     # Timestep to restart solver from (comment out if not restarting).  
@@ -17,20 +17,20 @@
 -imm 1                                          # Whether or  not immersed boundaries must be considered.(1 or 0)
 -thin 0                                         # Whether the immersed boundary is thin(1 or 0)
 -tio 1                                          # Number of timesteps after which new output data is recorded.
--ren 1734.7                                        # Reynolds number associated with flow (since timestep size and grid are decided seperately, this is a measure of viscosity of flowing fluid."
+-ren 500   #1734.7                                        # Reynolds number associated with flow (since timestep size and grid are decided seperately, this is a measure of viscosity of flowing fluid."
 -init1 1                                        # Initial Conditions are determined(check SetInitialGuessToOne() in bcs.c)
 -mframe 0                                       # ?
 -mg_k_semi 0                                    # multigrid method semi coarsening along z axis.
 -mg_j_semi 0                                    # "    "     "     "        "   "   "  " y " " .
 -mg_i_semi 0                                    # "    "     "     "        "   "   "  " x " " .
-#-body 1                                         # ?
+-body 1                                         # ?
 
 ## Boundary Parameters ###
 
 #-period 3000                                   # Period for pressure wave inlet boundary conditions.
 -inlet 1                                        # Inlet velocity is determined(check InflowFlux() in bcs.c)
 -uin 1.0
-
+-catcorr 0                                      # The momentum flux correction to be done using contravariant flux(0) or cartesian flux(1)
 ### Implicit(Pseudo Time) solver parameters ###
 
 -cfl 10000000                                        # pseudo time cfl
@@ -61,7 +61,7 @@
 ## Immersed Boundary parameters ###
 
 #-cl 1.                                          # Charactertistic Length(?)
--search_dir "z"                                    # Direction of search (x,y,z)
+-search_dir "x"                                    # Direction of search (x,y,z)
 -char_length_ibm 16.8                           # Characteristic Length of IBM (which divides every co-ordinate value of immersed boundary).
 -CMx_c -0.5                                      # Center of Mass of Immersed boundary (x-coordinate) 
 -CMy_c -0.5                                     # Center of Mass of Immersed boundary (y-coordinate)
