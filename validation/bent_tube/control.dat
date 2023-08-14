@@ -8,19 +8,19 @@
 -twoD 0                                         # 2D Simulation.
 
 ## Solver Parameters ###
--vis_flg 5                                      # Flag to display simulation diagnostic information. 
+-vis_flg 0                                      # Flag to display simulation diagnostic information. 
 -dt 0.01 #//0.0005                            # timestep size
--totalsteps 0                                   # Total Number of steps.
+-totalsteps 1500                                   # Total Number of steps.
 -d_taw 0.01                                     # ?
 #-rstart 500                                    # Timestep to restart solver from (comment out if not restarting).  
 #-rstart_fem 0                                  # Timestep to restart fem solver from (comment out if not restarting). 
 -imm 1                                          # Whether or  not immersed boundaries must be considered.(1 or 0)
--thin 0                                         # Whether the immersed boundary is thin(1 or 0)
+-thin 0                                          # Whether the immersed boundary is thin(1 or 0)
 -tio 1                                       # Number of timesteps after which new output data is recorded.
--ren 1000                                        # Reynolds number associated with flow (since timestep size and grid are decided seperately, this is a measure of viscosity of flowing fluid."
+-ren 300                                        # Reynolds number associated with flow (since timestep size and grid are decided seperately, this is a measure of viscosity of flowing fluid."
 -init1 1                                        # Initial Conditions are determined(check SetInitialGuessToOne() in bcs.c)
 -mframe 0                                       # ?
--mg_k_semi 1                                    # multigrid method semi coarsening along z axis.
+-mg_k_semi 0                                    # multigrid method semi coarsening along z axis.
 -mg_j_semi 0                                    # "    "     "     "        "   "   "  " y " " .
 -mg_i_semi 0                                    # "    "     "     "        "   "   "  " x " " .
 -body 1                                         # ?
@@ -43,12 +43,12 @@
 
 ## Grid Parameters ###
 
--L_x 3                                       # x dimension of fluid domain
--L_y 3                                        # y ""        "" """"  """""
--L_z 50                                       # z ""        "" """"  """""
+-L_x 20                                       # x dimension of fluid domain
+-L_y 2                                        # y ""        "" """"  """""
+-L_z 20                                       # z ""        "" """"  """""
 -grid 1                                         # Grid is read from grid.dat(0) or created using following parameters(1).
--im 61                                         # Number of grid points along x axis.
--jm 61                                         # Number of grid points along y axis. 
+-im 1001                                         # Number of grid points along x axis.
+-jm 101                                         # Number of grid points along y axis. 
 -km 1001                                         # Number of grid points along z axis.
 -r_grid 0                                       # Whether the grid should be rotated or not. 
 -gx_c 1.875                                       # Center of rotation of Grid (x-coordinate).
@@ -58,12 +58,12 @@
 -g_orient "zz00"                                # Orientation of axis of rotation of grid (xx00,yy00,zz00,xy45,xz45,yz45). --- First and Second Letters determine plane,numbers determine angle in plane.
 
 ## Immersed Boundary parameters ###
--search_dir "z"                                    # Direction of search (x,y,z)
+-search_dir "y"                                    # Direction of search (x,y,z)
 -cl 1.                                          # Charactertistic Length(?)
 -char_length_ibm 1                             # Characteristic Length of IBM (which divides every co-ordinate value of immersed boundary).
--CMx_c 1.0                                      # Origin of Immersed boundary (x-coordinate) 
+-CMx_c 1.0                                  # Origin of Immersed boundary (x-coordinate) 
 -CMy_c 1.0                                     # Origin of Immersed boundary (y-coordinate)
--CMz_c -5.00                                      # Origin of Immersed boundary (z-coordinate)
+-CMz_c 4.0                                      # Origin of Immersed boundary (z-coordinate)
 -move_ibm 0                                     # move the body during simulation.(rotation and/or translation).
 -fsi 0                                          # move the immersed boundary.
 -rfsi 0                                         # rotate the immersed boundary. 

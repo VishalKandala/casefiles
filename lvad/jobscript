@@ -1,0 +1,31 @@
+#!/bin/bash
+#SBATCH --get-user-env=L             #Replicate login environment
+#SBATCH --time=5:00:00
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=48
+#SBATCH --job-name="bent_tube"
+#SBATCH --output bent_tube.out
+##SBATCH --test-only
+#SBATCH --account=132759690918   #Set billing account to 123456
+#SBATCH --mem=180G
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=vishalkandala@tamu.edu
+
+echo "SLURM_JOB_ID="$SLURM_JOB_ID
+echo "SLURM_JOB_NODELIST"=$SLURM_JOB_NODELIST
+echo "SLURM_NNODES"=$SLURM_NNODES
+echo "SLURMTMPDIR="$SLURMTMPDIR
+
+cd $SLURM_SUBMIT_DIR
+echo "working directory = "$SLURM_SUBMIT_DIR
+
+module restore visualization
+
+echo "Launch testt with srun"
+NPROCS=`srun --nodes=${SLURM_NNODES} bash -c 'hostname' |wc -l`
+echo NPROCS=$NPROCS
+mpirun -n $NPROCS ./testt
+
+#
+echo "All Done!"
+
